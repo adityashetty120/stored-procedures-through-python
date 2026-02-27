@@ -57,7 +57,7 @@ def _get_connection(config: DbConfig):
     )
 
 
-def run_proc(proc_name: str, registry_table: str = "proc_query_registry") -> pd.DataFrame:
+def call_proc(proc_name: str, registry_table: str = "proc_query_registry") -> pd.DataFrame:
     """
     Looks up the SQL query registered under `proc_name` in `registry_table`,
     executes it, and returns the result as a pandas DataFrame.
