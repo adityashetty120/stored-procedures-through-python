@@ -1,4 +1,4 @@
-# db-query-lib
+# dbprocedures
 
 A lightweight Python library that fetches a registered SQL query by name from a MySQL table and returns its result as a **pandas DataFrame**.
 
@@ -8,12 +8,12 @@ A lightweight Python library that fetches a registered SQL query by name from a 
 
 ### From a local folder
 ```bash
-pip install /path/to/db_query_lib/
+pip install /path/to/dbprocedures/
 ```
 
 ### From a Git repository (internal)
 ```bash
-pip install git+https://your-internal-git-repo/db_query_lib.git
+pip install git+https://your-internal-git-repo/dbprocedures.git
 ```
 
 ---
@@ -72,7 +72,7 @@ CREATE TABLE proc_query_registry (
 ## Usage
 
 ```python
-from db_query_lib import run_proc
+from dbprocedures import run_proc
 
 df = run_proc("my_proc_name")
 print(df.head())
