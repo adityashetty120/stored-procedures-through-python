@@ -1,9 +1,12 @@
+import logging
 import os
 import pymysql
 import pandas as pd
 from dotenv import load_dotenv
 
 load_dotenv()
+
+logger = logging.getLogger(__name__)
 
 
 class DbConfig:
@@ -14,8 +17,8 @@ class DbConfig:
         self.user = user
         self.pswd = pswd
 
-    def print_details(self):
-        print("Using db connection: host: %s:%d, db: %s" % (self.server, self.port, self.db_name))
+    def log_details(self):
+        logger.debug("Using db connection: host: %s:%d, db: %s", self.server, self.port, self.db_name)
 
 
 def _load_config_from_env() -> DbConfig:
@@ -45,7 +48,7 @@ def _load_config_from_env() -> DbConfig:
 
 
 def _get_connection(config: DbConfig):
-    config.print_details()
+    config.log_details()
     return pymysql.connect(
         host=config.server,
         user=config.user,
@@ -97,7 +100,7 @@ def call_proc(proc_name: str, registry_table: str = "proc_query_registry") -> pd
             raise ValueError("No query found for proc_name: '{}'".format(proc_name))
 
         sql_query = lookup_df.iloc[0]["query"]
-        print("Executing query for proc_name '{}': {}".format(proc_name, sql_query))
+        logger.debug("Executing query for proc_name '%s': %s", proc_name, sql_query)
 
         return pd.read_sql(sql_query, conn)
 

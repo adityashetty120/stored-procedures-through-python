@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dbprocedures"          # what users pip install
-version = "0.1.0"
+version = "0.1.1"
 description = "Fetch and execute MySQL queries by proc_name, returning a pandas DataFrame."
 readme = "README.md"
 requires-python = ">=3.8"
