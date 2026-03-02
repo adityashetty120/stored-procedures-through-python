@@ -1,13 +1,23 @@
 [build-system]
 requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.backends.legacy:build"
+build-backend = "setuptools.build_meta"
 
 [project]
-name = "procedures"
+name = "dbprocedures"          # what users pip install
 version = "0.1.0"
 description = "Fetch and execute MySQL queries by proc_name, returning a pandas DataFrame."
 readme = "README.md"
 requires-python = ">=3.8"
+license = { text = "MIT" }    # or { file = "LICENSE" }
+authors = [
+    { name = "Your Name", email = "you@example.com" }
+]
+keywords = ["mysql", "database", "pandas", "sql"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
 dependencies = [
     "pymysql",
     "pandas",
@@ -15,4 +25,5 @@ dependencies = [
 ]
 
 [project.urls]
-Source = "https://github.com/your-org/db_query_lib"
+Homepage = "https://github.com/adityashetty120/stored-procedures-through-python"
+Source = "https://github.com/adityashetty120/stored-procedures-through-python"
