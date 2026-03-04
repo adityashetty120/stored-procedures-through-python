@@ -86,7 +86,8 @@ def call_proc(proc_name: str, registry_table: str = "proc_query_registry") -> pd
     EnvironmentError
         If any required environment variable is missing.
     ValueError
-        If no entry is found for the given proc_name.
+        If no entry is found for the given proc_name, or if the
+        registered query does not contain a WHERE clause.
     """
     config = _load_config_from_env()
     conn = None
@@ -100,6 +101,13 @@ def call_proc(proc_name: str, registry_table: str = "proc_query_registry") -> pd
             raise ValueError("No query found for proc_name: '{}'".format(proc_name))
 
         sql_query = lookup_df.iloc[0]["query"]
+
+        if "where" not in sql_query.lower():
+            raise ValueError(
+                "Query for proc_name '{}' is missing a WHERE clause. "
+                "All registered queries must include a WHERE condition.".format(proc_name)
+            )
+
         logger.debug("Executing query for proc_name '%s': %s", proc_name, sql_query)
 
         return pd.read_sql(sql_query, conn)
