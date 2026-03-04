@@ -3,16 +3,16 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "dbprocedures"          # what users pip install
-version = "0.1.1"
+name = "dbprocedures"          
+version = "0.1.2"
 description = "Fetch and execute MySQL queries by proc_name, returning a pandas DataFrame."
 readme = "README.md"
 requires-python = ">=3.8"
-license = { text = "MIT" }    # or { file = "LICENSE" }
+license = { text = "MIT" }   
 authors = [
-    { name = "Your Name", email = "you@example.com" }
+    { name = "Aditya Shetty", email = "adityashetty120@gmail.com" }
 ]
-keywords = ["mysql", "database", "pandas", "sql"]
+keywords = ["mysql", "database", "pandas", "sql", "stored procedures"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
